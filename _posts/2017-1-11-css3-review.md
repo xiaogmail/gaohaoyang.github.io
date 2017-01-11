@@ -155,8 +155,6 @@ body {
 
 # Try It！Amazing！
 
-# Try It！Amazing！
-
 #### 图片的响应式设计
 
 ```css
