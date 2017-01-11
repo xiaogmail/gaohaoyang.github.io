@@ -31,6 +31,7 @@ code
 * 目录支持标记！！
 `* content` `{:toc}`
 
+* 可以在 yaml 中用`excerpt: `来显式指明摘要；
 * 最后别忘了写开头的 yaml 信息。
 
 
