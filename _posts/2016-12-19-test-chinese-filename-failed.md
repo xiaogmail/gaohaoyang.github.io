@@ -8,7 +8,9 @@ title: 测试帖
 这样之后，在本地测试就完美了。
 
 ---
-svg 图片测试成功！
+svg 图片测试成功！（以后思维导图这种就用 svg ，放大后不会失真；普通图片就用 png ）
+
+`![svgtest](/images/svgtest.svg)`
 
 ![svgtest](/images/svgtest.svg)
 
