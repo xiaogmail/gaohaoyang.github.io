@@ -285,6 +285,7 @@ HTML 5 依然保留了一个与框架相关的元素：`<iframe>`，**该元素�
 > `<meta>`元素里`<http-equiv>`和`<name>`的作用基本相同，只是`<http-equiv>`属性值通常规定为应该是浏览器可以识别的、具有特殊意义的名称。
 
 `<http-equiv>`属性支持以下几个值：
+
 * `<Expires>`：指定网页的过期时间，一旦网页过期，必须重新从服务器上下载。例如：
   * `<meta http-equiv="Expires" content="Sat Sep 27 16:12:36 CST 2008"/>`
 * `<Pragma>`：`<meta http-equiv="Pragma" content="no-cache">`禁止缓存页面，等价于 HTTP 头中的`Cache-Control: no-cache`
