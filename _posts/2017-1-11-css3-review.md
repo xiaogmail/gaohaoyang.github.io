@@ -152,6 +152,7 @@ body {
 	background-color: lightblue; 
 }}
 ```
+
 # Try It！Amazing！
 
 #### 图片的响应式设计
