@@ -143,7 +143,9 @@ CSS3 也是可以制作动画的，可以取代部分动态图片和 JavaScript�
 > 如果没有CSS3的媒体查询模块，就不能针对设备特性（如视口宽度）设置特定的CSS样式
 
 #### 媒体查询例子：
+
 如果浏览器窗口小于 500px, 背景将变为浅蓝色：
+
 ```css
 @media only screen and (max-width: 500px) {    
 body { 
@@ -153,6 +155,7 @@ body {
 # Try It！Amazing！
 
 #### 图片的响应式设计
+
 ```css
 img {
 	<!-- 图片可能会超过其原始大小 -->
@@ -164,7 +167,9 @@ img {
 ```
 
 #### [菜鸟教程-响应式 Web 设计](http://www.runoob.com/css/css-rwd-intro.html)
+
 #### viewport
+
 > **什么是 Viewport?**
 >
 > viewport 是用户网页的可视区域。
@@ -176,13 +181,17 @@ viewport 翻译为中文可以叫做"视区"。
 `<meta name="viewport" content="width=device-width, initial-scale=1.0">`
 
 #### 响应式 Web 设计框架
+
 # [Bootstrap](http://www.bootcss.com/)
 
 #### 其他
+
 `<meta http-equiv="X-UA-Compatible" content="IE=edge">`：
+
 > 这是一个**文档兼容模式**的定义。Edge 模式告诉 IE 以最高级模式渲染文档，也就是任何 IE 版本都以当前版本所支持的最高级标准模式渲染，避免版本升级造成的影响。
 
 来自 Bootstrap 的说明：
+
 > Bootstrap 不支持 IE 古老的兼容模式。为了让 IE 浏览器运行最新的渲染模式下，建议将此 <meta> 标签加入到你的页面中：
 `<meta http-equiv="X-UA-Compatible" content="IE=edge">`
 按 F12 键打开 IE 的调试工具，就可以看到 IE 当前的渲染模式是什么。
