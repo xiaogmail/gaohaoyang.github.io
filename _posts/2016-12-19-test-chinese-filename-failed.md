@@ -7,6 +7,9 @@ title: 测试帖
 
 这样之后，在本地测试就完美了。
 
+---
+svg 图片测试成功！
+
 ![svgtest](/images/svgtest.svg)
 
 ```
