@@ -9,27 +9,14 @@ type: page
 * content
 {:toc}
 
+
+* [多说](http://xiaogmail.duoshuo.com/admin/thread/) 
+	
+	多说后台管理界面
+
+---
+
 ## 工具
-
-* [box-shadow generator](http://www.cssmatic.com/box-shadow)
-
-    生成 box-shadow 的工具。
-
-* [gradient-generator](http://www.cssmatic.com/gradient-generator)
-
-    渐变生成器。
-
-* [Ultimate CSS Gradient Generator](http://www.colorzilla.com/gradient-editor/)
-
-    也是渐变生成器
-
-* [CSS Generators -CSSREFLEX](http://www.cssreflex.com/css-generators/)
-
-    CSS3 生成器
-
-- [tiny png](https://tinypng.com/)
-
-    用于压缩 png 或 jpg 的在线工具
 
 * [图床 https://sm.ms/](https://sm.ms/)
 
@@ -56,25 +43,6 @@ type: page
 * [JavaScript 秘密花园](http://bonsaiden.github.io/JavaScript-Garden/zh/)
 
 * [JavaScript 设计模式 系列 AlloyTeam](http://www.alloyteam.com/2012/10/common-javascript-design-patterns/)
-
-### ES2015
-
-- [https://tc39.github.io/ecma262/](https://tc39.github.io/ecma262/)
-* [http://www.ecma-international.org/ecma-262/6.0/](http://www.ecma-international.org/ecma-262/6.0/)
-
-    ES2015规范
-
-- [http://es6katas.org/](http://es6katas.org/)
-
-    Learn ES6 by doing it. Fix failing tests. Keep all learnings.
-
-* [30分钟掌握ES6/ES2015核心内容（上）](http://segmentfault.com/a/1190000004365693)
-
-* [30分钟掌握ES6/ES2015核心内容（下）](http://segmentfault.com/a/1190000004368132)
-
-* [《ECMAScript 6入门》 -阮一峰](https://github.com/ruanyf/es6tutorial)
-
-* [EcmaScript6 全规范（含node） -ouvens](https://github.com/ouvens/es6-code-style-guide)
 
 ### NodeJS
 
@@ -164,47 +132,6 @@ type: page
 
 ## 编辑器
 
-### Atom 中常用插件
-
-* auto-beautify
-* autoprefixer
-* block-comment
-* color-picker
-* docblockr
-* emmet
-* jquery-snippets
-* jshint
-* linter
-* linter-csslint
-* linter-htmlhint
-* minimap
-* minimap-git-diff
-* minimap-codeglance 滑过 minimap 显示代码
-* minimap-find-and-replace 在 minimap 中显示 `ctrl+D` 选中的内容
-* open-in-browser
-* uglify
-* active-power-mode
-* atom-terminal-panel
-* linter-scss-linter
-* atom-ternjs
-* file-icons 将图标变成彩色
-* autocomplete-paths 自动补充路径
-* symbols-tree-view A symbol treeview like taglist
-
-常用的主题：
-
-UI Theme: One Dark
-
-Syntax Theme: Atom Dark or One Dark
-
-## GitBook 及其插件
-
-* [Gitbook 的使用和常用插件 -赵达](http://zhaoda.net/2015/11/09/gitbook-plugins/)
-* [gitbook-plugin-expandable-chapters](https://plugins.gitbook.com/plugin/expandable-chapters)
-
-    折叠左侧目录章节。
-
-    <!-- ![](http://ww4.sinaimg.cn/large/7011d6cfjw1f08kmplbj1j20gn05l0tk.jpg) -->
 
 ## Chrome 插件
 - [Octotree](https://chrome.google.com/webstore/detail/octotree/bkhaagjahfmjljalopjnoealnfndnagc)
