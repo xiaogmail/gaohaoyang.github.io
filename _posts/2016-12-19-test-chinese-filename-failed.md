@@ -7,6 +7,8 @@ title: 测试帖
 
 这样之后，在本地测试就完美了。
 
+![svgtest](/images/svgtest.svg)
+
 ```
 > r1
 > 
