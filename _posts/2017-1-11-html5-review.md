@@ -85,6 +85,7 @@ tags:  HTML
 	</body>
 </html>
 ```
+
 #### 基本元素：
 
 	<style> 用于引入CSS
@@ -126,13 +127,17 @@ tags:  HTML
 * `<var>` 表示一个变量。浏览器通常以斜体显示`<var>`所包含的文本
 
 ##### 超链接和*锚点*
+
 <big>< a... /></big>
+
 * `href`：链接地址
 * `target`：指定使用框架集中的哪个框架来装载。属性值可以为_self、_blank、_top、_parent 四个，分别代表使用自身、新窗口、顶层框架、父框架来加载新资源
 * `media`：指定目标 url 所引用的媒体类型。默认值为 all。是 HTML 5 新增的属性。
 
 **命名锚点就是页面内的定位点，用来实现页面内的定位：**
+
 `<a name="anchor1">`
+
 `<a href="#anchor1">`
 
 ##### 列表元素
@@ -156,9 +161,13 @@ tags:  HTML
 ![自定义列表](http://upload-images.jianshu.io/upload_images/658453-be440d36bde5ca78.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ##### 图片相关元素
+
 `<img>`
+
 此外，还可以指定以下属性：
+
 * `height`：高度，可以为**百分比**或像素值
+
 * `width`：宽度，可以为**百分比**或像素值
 
 **图片映射：将一幅图片划分成不同的区域，每一个区域可以设置一个链接地址**
@@ -166,7 +175,9 @@ http://blog.csdn.net/qiantujava/article/details/18305709
 ![图片映射 图中每一个头像都连接到不同的地址](http://upload-images.jianshu.io/upload_images/658453-a9365b7172e2a1a3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ##### 表格
+
 **< table >**
+
 * `<caption>` 定义表格标题
 * `<thead>` 表格头
 * `<tfoot>` 表格脚
@@ -223,7 +234,9 @@ HTML 5 依然保留了一个与框架相关的元素：`<iframe>`，**该元素�
 * spellcheck：为`<input>`、`<textarea>`等元素增加了 spellcheck 属性，浏览器会对输入进行单词拼写检查（错误的单词划红色的下划线）。
 
 ##### HTML 5 新增的常用元素
+
 ###### 文档结构元素
+
 * `<article>`：代表页面上独立、完整的一篇“文章”，可以使一个帖子、一篇 Blog 文章、一篇短文、一条完整的回复等。
   * `<article>`内部可以用`<header>`定义文章标题部分，用`<footer>`定义脚注，用多个`<section>`将文章内容分成几个段落，同时还可以嵌套多个`<article>`作为它的附属文章，比如一篇 Blog 文章后面可以有多篇回复文章。
 * `<section>`：对页面内容进行分块；
@@ -251,6 +264,7 @@ HTML 5 依然保留了一个与框架相关的元素：`<iframe>`，**该元素�
 ![`<meter> & <progress>`](http://upload-images.jianshu.io/upload_images/658453-031cb33e10ecf2fc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ##### HTML 5 的头部和元信息
+
 # <head>
 * `<script>`：用于包含 JavaScript 脚本；
 * `<style>`：用于**定义** CSS 样式；
@@ -286,6 +300,7 @@ HTML 5 新增了关于拖放的 API ，通过拖放 API 可以让 HTML 页面的
 一个问题，不要被 HTML 5 的“强大”迷惑，上传文件这种事情还是要靠 JavaScript 来完成；只不过 HTML 5 提供了更方便的接口。
 
 `<form>`三个重要的属性：
+
 * `<action>`：目标地址；
 * `<method>`：`post` or `get`；
 * `<enctype>`：**对表单内容进行编码所使用的字符集**
