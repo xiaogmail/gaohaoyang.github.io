@@ -10,11 +10,11 @@ tags:  HTML
 
 第二个不深不浅的坑，踩一踩。
 
+
+
+
+
 ![HTML5](http://upload-images.jianshu.io/upload_images/658453-18021a7df5734359.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-
-
-
 
 # 引言
 > HTML5 致力于解决跨浏览器问题，可以取代部分原来要靠JavaScript实现的功能；
