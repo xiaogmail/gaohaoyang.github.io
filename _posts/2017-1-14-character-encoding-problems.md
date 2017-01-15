@@ -98,6 +98,9 @@ UTF-32 编码以32位无符号整数为单位。Unicode 的 UTF-32 编码就是�
 
 ![BOM](http://upload-images.jianshu.io/upload_images/658453-ce099bbbf208c1a3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
+
+> 虽然 UTF-8 这种变长的编码方式不存在大端小端的问题，但是还是指定了 BOM 来表示这个文件是 UTF-8。在实际的使用过程当中尽量不要对 UTF-8 添加 BOM，否则很多软件解析都会出现问题。
+
 ### 其他
 
 Java 中使用 UTF-16 为字符编码格式，中文英文都占2字节。
