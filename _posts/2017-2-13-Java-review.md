@@ -589,6 +589,7 @@ try {
 ![](http://upload-images.jianshu.io/upload_images/658453-a7ffa8a4bd3bf919.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 注意点：
+
 1. 资源的声明和初始化都必须放在（）里，不能像上面那样在外面声明里面初始化；
 2. fis 的作用域还是只有在 try 块中；catch 块和外部都无法访问；
 3. 这里的自动关闭特性只是省去了 finally 语句，catch 捕捉异常还是不可省的；
@@ -1280,6 +1281,7 @@ Thread-0: 9
 ---
 
 线程以以下三种方法结束：
+
 1. run() 或 call()（Callable 接口） 方法执行完，线程正常结束；
 2. 线程抛出一个未捕获的异常；
 3. 直接调用 stop() 方法来结束线程——**该方法容易导致死锁，通常不推荐使用。**
@@ -1399,12 +1401,14 @@ public synchronized void run() {
 举个例子：String 和 StringBuilder，String 是 immutable 的，每次对于 String 对象的修改都将产生一个新的 String 对象，而原来的对象保持不变，而 StringBuilder 是 mutable，因为每次对于它的对象的修改都作用于该对象本身，并没有产生新的对象。    
 
 不可变类的好处： 
+
 1. 线程安全，可以不用被 synchroinzed 就在并发环境中共享，无需使用额外的锁机制（简化编程模型）； 
 2. 提高性能，可以被缓存起来重复使用；例如对字符串字面值的缓存；
 
 immutable 也有一个缺点就是会制造大量垃圾，由于他们不能被重用而且对于它们的使用就是”用“然后”扔“，字符串就是一个典型的例子，它会创造很多的垃圾，给垃圾收集带来很大的麻烦。当然这只是个极端的例子，合理的使用 immutable 对象会创造很大的价值。
 
 如何实现不可变类？
+
 1. immutable对象的状态在创建之后就不能发生改变，**任何对它的改变都应该产生一个新的对象**。
 2. Immutable类的所有的属性都应该是final的。
 3. 对象必须被正确的创建，比如：对象引用在对象创建过程中不能泄露(leak)。
@@ -1412,6 +1416,7 @@ immutable 也有一个缺点就是会制造大量垃圾，由于他们不能被�
 5. 如果类中包含mutable类对象，那么返回给客户端的时候，返回该对象的一个拷贝，而不是该对象本身（该条可以归为第一条中的一个特例）
 
 #### 其他
+
 * `java.math.BigDecimal`：高精度数字，解决`Double`不够精确的问题；
 * ![](http://upload-images.jianshu.io/upload_images/658453-d02731cafc3ddae2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
