@@ -89,8 +89,8 @@ for (String s : ss) {
 * 
 * 相同类型的变量，调用同一个方法时呈现出多种不同的行为特征，这就是**多态**；
 * `Java`引用变量有两个类型：编译时类型和运行时类型。编译时类型是变量声明时的类型；运行时类型是实际赋给该变量的对象类型；**编译时类型和运行时类型不同，就可能出现多态。**
-	* `BaseClass b = new SubClass();` //编译时类型和运行时类型不同；
-	* `b.selfIntroduce();` //会调用运行时类型的方法，即子类的方法；
+    * `BaseClass b = new SubClass();` //编译时类型和运行时类型不同；
+    * `b.selfIntroduce();` //会调用运行时类型的方法，即子类的方法；
 * **引用变量在编译阶段只能调用其编译时类型所具有的方法，但在运行时则执行它运行时类型所具有的方法；**
 **因此，代码中`b.subClassMethod();`是编译不通过的。**看起来像废话。
 * 
@@ -108,8 +108,8 @@ for (String s : ss) {
 * ***`final`修饰的成员变量必须显式的指定初始值，否则这些成员变量的值就一直是系统默认分配的`0, '\u0000', false, null`。这里的“显式指定”可以在声明变量时，可以在初始化块里，可以在构造器里。***
 *  
 *  `String`和其他类的相互转化：
-	*  `String.valueOf()`或直接 `value + ""`；
-	*  `Integer.parseInt(), Double.parseDouble()...`；
+    *  `String.valueOf()`或直接 `value + ""`；
+    *  `Integer.parseInt(), Double.parseDouble()...`；
 * **常量池**：专门用于管理在编译时被确定并被**保存在已编译的.class文件中**的一些数据。它包括类、方法、接口中的常量，还包括字符串常量。
 常量池中的对象，系统会自动保留对他们的强引用——所以不会轻易地被垃圾回收；
 * `new String("hello");`会产生两个字符串对象：一个字符串常量`"hello"`对象在常量池中；一个在运行时的内存堆中；
@@ -118,7 +118,7 @@ for (String s : ss) {
 *  从语义的角度来看，抽象类是从多个具体类中抽象出来的父类，它具有更高层次的抽象，抽象类避免了子类设计的随意性。
 * 将抽象进行的跟彻底——接口——接口里所有方法都是抽象方法。
 * **匿名内部类**
-	* ![](http://upload-images.jianshu.io/upload_images/658453-3815fce5b13439a1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+    * ![](http://upload-images.jianshu.io/upload_images/658453-3815fce5b13439a1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 * 被匿名内部类访问的局部变量自动变成`final`修饰。
 * `native`关键字的意思是该方法是由其他语言实现的；
 *  
@@ -193,7 +193,7 @@ blue
 * `hasNextLine()`：还有下一行；+ `nextLine()`；
 * `useDelimiter(String pattern)`：自定义分隔符（`Delimiter`）；
 * `useRadix(int)`：自定义数字的进制：
-	* ![](http://upload-images.jianshu.io/upload_images/658453-dbe11b91f32fc9e9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+    * ![](http://upload-images.jianshu.io/upload_images/658453-dbe11b91f32fc9e9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 **当读到不符合要求的内容时，`hasNextXXX()`方法静默退出，不抛出任何异常：**
 
@@ -208,7 +208,7 @@ System 类代表当前 Java 程序的运行平台，程序不能创建 System �
 * `System.exit(int status)`：退出虚拟机；
 * `System.getenv()`：获取环境变量；
 * `System.getProperties()`：获取系统属性；
-	* ![](http://upload-images.jianshu.io/upload_images/658453-fdaaf22511ec8c5e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+    * ![](http://upload-images.jianshu.io/upload_images/658453-fdaaf22511ec8c5e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 * `System.gc()`：通知系统进行垃圾清理；
 * `System.runFinalization()`：通知系统进行资源回收；（貌似都没什么用）
 * **`System.currentTimeMillis()`：当前时间毫秒；**
@@ -247,20 +247,20 @@ implements Serializable, Comparable<String>, CharSequence
 * `concat(String str)`：连接，即加到尾部；
 * `boolean contains(CharSequence s)`：包含；查找字符串；
 * `equals(Object anObject)/equalsIgnoreCase(String anotherString)`：比较字符串；
-* `static String	format(String format, Object... args)`：格式化字符串，类似于 C 语言的`printf()`或 Python 的 `%`；
+* `static String    format(String format, Object... args)`：格式化字符串，类似于 C 语言的`printf()`或 Python 的 `%`；
 * `byte[] getBytes(Charset charset)/getBytes(String charsetName)`：***Encodes** this String into a sequence of bytes using the given charset, storing the result into a new byte array.*
 * `getChars(int srcBegin, int srcEnd, char[] dst, int dstBegin)`：字节数组；
 * `char[] toCharArray()`：返回一个 char 数组，包含相同内容；
 * `hashCode()`：**String 类重写了`hashCode()`方法！记住！**
-	* ![](http://upload-images.jianshu.io/upload_images/658453-73a08f7785573396.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+    * ![](http://upload-images.jianshu.io/upload_images/658453-73a08f7785573396.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 * `int indexOf(int ch)/indexOf(String str[, int fromIndex])/lastIndexOf(int ch[, int fromIndex])/lastIndexOf(String str[, int fromIndex])/endsWith(String suffix)/startsWith(String prefix)`：检索字符/字符串；
-* `static String	join(CharSequence delimiter, CharSequence... elements)`：`join`操作；`String.join("xxx", "a", "b", "c");`
+* `static String    join(CharSequence delimiter, CharSequence... elements)`：`join`操作；`String.join("xxx", "a", "b", "c");`
 * `String[] split(String regex[, int limit])`：`split` 操作——`join` 的逆操作；
-	* ![](http://upload-images.jianshu.io/upload_images/658453-aa57e3508aace03f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+    * ![](http://upload-images.jianshu.io/upload_images/658453-aa57e3508aace03f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 * `boolean matches(String regex)`：正则表达式；*Tells whether or not this string matches the given regular expression.*
 * `String replace(char oldChar, char newChar)/replace(CharSequence target, CharSequence replacement)/replaceAll(String regex, String replacement)/replaceFirst(String regex, String replacement)`：字符串操作，替换；
 * `substring(int beginIndex[, int endIndex])`：子串；
-* `static String	valueOf(boolean b/char c/char[] data/double d/int i/long l/Object obj)`：转换其他类型；
+* `static String    valueOf(boolean b/char c/char[] data/double d/int i/long l/Object obj)`：转换其他类型；
 
 `StringBuilder`：非线程安全，性能略高；`StringBuffer`：线程安全；// 可变字符串类；
 `sb.append(), insert(), replace(), delete(), reverse()`等原地操作；
@@ -284,6 +284,7 @@ implements Serializable, Comparable<String>, CharSequence
 一个功能更完善（相比如`Math.random()`）的随机数生成器；
 
 **如何生成 `[5, 20)`之间的随机数？`r.nextInt(15) + 5`**
+
 * `Random([long seed])`：种子；默认为当前系统时间；
 * `DoubleStream doubles([long streamSize[, double randomNumberOrigin, double randomNumberBound]])`：流式编程，生成一个[ 0.0, 1.0 )（或[ randomNumberOrigin, randomNumberBound )）的 Double 流；
 * `IntStream ints(long streamSize, int randomNumberOrigin, int randomNumberBound)`：同上（不过返回的是任意一个合法整数或[ Origin, Bound )）；`longs(...)`；
@@ -372,25 +373,28 @@ System.out.println(LocalDateTime.now());
 ![](http://upload-images.jianshu.io/upload_images/658453-fab9ec41c4dfde9e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 常用的类有：
+
 * *`HashSet`*：`Set`接口的 哈希表（Hash Table）实现；非线程安全；**根据`hashCode()`值和`equals()`方法来确定对象的存储位置——先根据`hashCode()`值计算桶位，再用`equals()`方法比较（如果桶位上已经有对象）；**分析以下四种情况：
-	* `hashCode()`不同，`equals()`为`true`——存在两个不同的桶里；
-	* `hashCode()`相同，`equals()`为`false`——存储在同一个桶里，链接法链起来；
-	* `hashCode()`不同，`equals()`为`false`——存在不同的桶里；
-	* `hashCode()`相同，`equals()`为`true`——后面一个存不进去，冲突了；
+    * `hashCode()`不同，`equals()`为`true`——存在两个不同的桶里；
+    * `hashCode()`相同，`equals()`为`false`——存储在同一个桶里，链接法链起来；
+    * `hashCode()`不同，`equals()`为`false`——存在不同的桶里；
+    * `hashCode()`相同，`equals()`为`true`——后面一个存不进去，冲突了；
 * **所以，当我们试图把某个类的对象存入`Set`中时，应重写该类的`hashCode()`和`equals()`方法，并使他们的返回值保持一致。**`Set.remove()`的逻辑也是一样的：先通过`hashCode()`方法计算桶位，在用`equals()`比较。
 * 
 * **`LinkedHashSet`：在`HashSet`的基础上，用 双 链 表 维护元素添加的顺序，可以获得更快的遍历速度，并且是按元素的添加顺序遍历；**
+
 ![](http://upload-images.jianshu.io/upload_images/658453-603cec98777309e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 * `SortedSet`接口；
 * *`TreeSet`*：红黑树实现；确保集合元素处于有序状态；**`TreeSet`会调用对象的`compareTo()`方法来进行比较，从而确定元素的存储位置；这里虽然不关`equals()`方法什么事，但从逻辑上考虑还是应该保证`equals()`方法和`compareTo()`的一致性。**
-	* Java 提供了一个`Comparable`接口，该接口里定义了一个`compareTo()`方法；
-	* 已实现了`Comparable`接口的类有：`BigDecimal, BigInteger, 以及所有数值类型的包装类（Double, Integer...）, Character, Boolean（true > false）, String, Date, Time`等；
+    * Java 提供了一个`Comparable`接口，该接口里定义了一个`compareTo()`方法；
+    * 已实现了`Comparable`接口的类有：`BigDecimal, BigInteger, 以及所有数值类型的包装类（Double, Integer...）, Character, Boolean（true > false）, String, Date, Time`等；
 * `EnumSet`：专为枚举类设计的集合，`EnumSet`中的元素必须是指定枚举类型的枚举值；
 * 
 * `List`是`Collection`的子接口，是有序集合，因此新增了一些**根据索引**来操作集合元素的方法：
-	* `add(int index, Object o), allAll(int index, Collection o), get(int index), indexOf(Object o), lastIndexOf(Object o), remove(int index), set(int index, Object element), subList(int fromIndexInclude, int toIndexExclude), replaceAll(UnaryOperator operator), sort(Comparator c)`；
+    * `add(int index, Object o), allAll(int index, Collection o), get(int index), indexOf(Object o), lastIndexOf(Object o), remove(int index), set(int index, Object element), subList(int fromIndexInclude, int toIndexExclude), replaceAll(UnaryOperator operator), sort(Comparator c)`；
 * 相比于`Set`，`List`接口还额外提供了`listIterator()`方法来返回一个`ListIterator`迭代器；`ListIterator`继承自`Iterator`接口，新增了专门操作`List`的方法：
-	* `boolean hasPrevious(), Object previous(), add(Object o)`；向前迭代和增加元素（`Iterator`只能向后迭代和删除元素）；
+    * `boolean hasPrevious(), Object previous(), add(Object o)`；向前迭代和增加元素（`Iterator`只能向后迭代和删除元素）；
 * `ArrayList`：
 > `ArrayList` 和 `Vector`
 > 
@@ -402,10 +406,10 @@ System.out.println(LocalDateTime.now());
 * 
 * `Queue`集合
 * `Queue`接口：
-	* `add(Object o)`：将指定元素加入队列尾部；
-	* `peek()`：获取队列头部元素，但不删除；
-	* `poll()`：获取队列头部元素，并删除；
-	* 还有`element(), offer(Object e), remove()`等方法；
+    * `add(Object o)`：将指定元素加入队列尾部；
+    * `peek()`：获取队列头部元素，但不删除；
+    * `poll()`：获取队列头部元素，并删除；
+    * 还有`element(), offer(Object e), remove()`等方法；
 
 > **`Queue`有一个*`PriorityQueue`*实现类。除此之外，`Queue`还有一个`Deque`接口，代表“双端队列”，两端都可以添加、删除元素。`Deque`的实现类有*`ArrayDeque`*和*`LinkedList`*。**
 
@@ -418,7 +422,7 @@ System.out.println(LocalDateTime.now());
 > 从 Java 源码来看，Java 是先实现了 Map ，然后通过包装一个所有 value 都为 null 的 Map 就实现了 Set 集合。
 
 * `HashMap`：`Map`接口的 哈希表（Hash Table）实现；
-	* `IdentityHashMap`：当且仅当两个 key 严格相等（key1 == key2）时才认为两个 key 相等：
+    * `IdentityHashMap`：当且仅当两个 key 严格相等（key1 == key2）时才认为两个 key 相等：
 ![](http://upload-images.jianshu.io/upload_images/658453-d8968ea465c35b90.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 * `TreeMap`：`SortedMap`接口实现类，红黑树实现；
 * `LinkedHashMap`：同`LinkedHashSet`；
@@ -461,11 +465,13 @@ System.out.println(LocalDateTime.now());
 #### java.util.Collections 工具类
 
 排序操作：
+
 * `reverse(List list), shuffle(List list), sort(List list), sort(List list, Comparator c)`：颠倒顺序，洗牌（打乱顺序），排序；
 * `swap(List list, int i, int j)`：交换元素；
 * `rotate(List, int distance)`：当 distance 为正时，将 list 集合后 distance 个元素整体移动到前面；为负时将前 distance 个元素移动到后面；
 
 查找、替换操作：
+
 * `int binarySearch(List list, Object key)`：二分查找，前提有序；
 * `max(Collection c)/max(Collection, Comparator comp)/min/min`：根据自然顺序/指定顺序返回最大/最小元素；
 * `fill(List list, Object o)`：填充；
@@ -473,9 +479,11 @@ System.out.println(LocalDateTime.now());
 * `replaceAll(List list, Object oldVal, Object newVal)`：替换所有旧值；
 
 同步控制：
+
 * `synchronizedList/Set/Map(List/Set/Map c)`：将指定集合**包装**成同步的，即线程安全的；Java 集合框架中常用的 ArrayList, ArrayDeque, LinkedList, HashSet, TreeSet, HashMap, TreeMap 都是线程不安全的；
 
 设置不可变集合：
+
 * `emptyXxx()`：返回一个空的，不可变的集合对象；
 * `singleton(T o)/singletonList(T o)/singletonMap(K k, V v)`：返回一个仅包含一个元素的 set，list，map；
 * `unmodifiableXxx(C c)`：返回指定集合对象的**不可变视图**；只读，任何修改操作都不支持（包括修改 key-value 对的 value）；
@@ -505,9 +513,9 @@ System.out.println(LocalDateTime.now());
 
 ```java
 <T> void fromArrayToCollection(T[] a, Collection c) {
-	for (T o : a){
-		c.add(a);
-	}
+    for (T o : a){
+        c.add(a);
+    }
 }
 
 fromArrayToCollection(a, c);// 调用的时候无需显式传入类型参数，编译器会根据实参类型自动推断；
@@ -549,18 +557,18 @@ Java 7 提供的多异常捕获：`catch (IndexOutOfBoundsException|NumberFormat
 ```java
 FileInputStream fis = null;// 【块】 作用域，所以在这里 【声 明】；
 try {
-	fis = new FileInputStream("a.txt");// 在 try 块中 尝 试 打开；
-	...
+    fis = new FileInputStream("a.txt");// 在 try 块中 尝 试 打开；
+    ...
 } catch (IOException e) {
-	e.printStackTrace();
+    e.printStackTrace();
 } finally {
-	if (fis != null) {// 这里，因为可能打开失败，fis还是null；
-		try {
-			fis.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+    if (fis != null) {// 这里，因为可能打开失败，fis还是null；
+        try {
+            fis.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
 ```
 
@@ -585,12 +593,12 @@ try {
 
 ```java
 public class MyException extends Exception {
-	public MyException(){
-		super();
-	}
-	public MyException(String msg) {
-		super(msg);
-	}
+    public MyException(){
+        super();
+    }
+    public MyException(String msg) {
+        super(msg);
+    }
 }
 ```
 
@@ -613,6 +621,7 @@ public class MyException extends Exception {
 ![](http://upload-images.jianshu.io/upload_images/658453-fdb17bac87e799f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 `Connection`：
+
 * `Statement createStatement()`：返回一个`Statement`对象；
 * `PreparedStatement prepareStatement(String sql)`：返回预编译的`Statement`对象；
 * `CallableStatement prepareCall(String sql)`：返回`CallableStatement`对象，用于调用存储过程；
@@ -622,12 +631,13 @@ public class MyException extends Exception {
 `setSavePoint([String name]), roolback([Savepoint savepoint]), setAutoCommit(boolean autoCommit)(关闭/打开自动提交，打开/关闭事务), commit()`
 
 `Statement`：（`PreparedStatement`和`CallableStatement`都是其子类）
+
 * `ResultSet executeQuery(String sql)`：执行查询语句；
 * `int executeUpdate(String sql)`：执行 DML 语句和 DDL 语句，并返回受影响的行数；
 * `boolean execute(String sql)`：执行任何 SQL 语句，如果执行后的第一个结果为`ResultSet`对象，则返回 true；如果执行后的第一个结果为受影响的行数或没有任何结果，则返回 false。
 * 执行了`execute`之后可以用`Statement`对象的以下两个方法来获取执行结果：
-	* `getResultSet()`
-	* `getUpdateCount()`
+    * `getResultSet()`
+    * `getUpdateCount()`
 
 ##### 使用`PreparedStatement`执行 SQL 语句
 
@@ -745,7 +755,7 @@ file.getParentFile(): null
 File file = new File("xxx");
 // 先绝对化，再获取父路径；直接获取是null；
 for (String s : file.getAbsoluteFile().getParentFile().list()) {
-	System.out.println(s);
+    System.out.println(s);
 }
 ```
 
@@ -777,8 +787,8 @@ FileInputStream fis = new FileInputStream("a.txt");
 byte[] bbuf = new byte[5];
 int hasRead = 0;
 while ((hasRead=fis.read(bbuf)) > 0){
-	System.out.println(new String(bbuf, 0, hasRead, "gb2312"));
-	System.out.println("--------");
+    System.out.println(new String(bbuf, 0, hasRead, "gb2312"));
+    System.out.println("--------");
 }
 fis.close();
 
@@ -812,7 +822,7 @@ System.out.println(fr.getEncoding());
 char[] cbuf = new char[1024];
 int hasRead = 0;
 while ((hasRead=fr.read(cbuf)) > 0) {
-	System.out.println(new String(cbuf, 0, hasRead));
+    System.out.println(new String(cbuf, 0, hasRead));
 }
 fr.close();
 
@@ -838,7 +848,7 @@ FileOutputStream fos = new FileOutputStream("acopy.txt");
 byte[] bbuf = new byte[32];
 int hasRead = 0;
 while ((hasRead=fis.read(bbuf)) > 0) {
-	fos.write(bbuf, 0, hasRead);
+    fos.write(bbuf, 0, hasRead);
 }
 fis.close();
 fos.close();
@@ -868,7 +878,7 @@ InputStreamReader inputStreamReader = new InputStreamReader(new FileInputStream(
 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
 String line = null;
 while ((line=bufferedReader.readLine()) != null){
-	System.out.println(line);
+    System.out.println(line);
 }
 
 // InputStreamReader inputStreamReader = new InputStreamReader(new FileInputStream("a.txt"), "gb2312");
@@ -880,6 +890,7 @@ while ((line=bufferedReader.readLine()) != null){
 ##### Java 虚拟机读写其他进程的数据
 
 前面介绍过，`Runtime`对象的`exec()`方法可以运行平台上的其他程序，该方法产生一个 Process 对象，Process 对象代表由该 Java 程序启动的子进程。Process 类提供了如下三个方法：
+
 * `InputStream getErrorStream()`：获取子程序的错误流；
 * `InputStream getInputStream()`：获取子进程的**输出流（麻蛋，这里居然是站在主进程的角度）**；
 * `OutputStream getOutputStream()`：获取子进程的**输入流**；
@@ -1013,7 +1024,7 @@ Paths 工具类只有两个 get 方法，用来生成 Path ，同略。
 * 
 * `delete(Path path)/deleteIfExists(Path path)/exists(Path path, LinkOption... options)`：File.delete()/File.exists()
 * 
-* `static Stream<Path>	find(Path start, int maxDepth, BiPredicate<Path,BasicFileAttributes> matcher, FileVisitOption... options)`：Return a Stream that is lazily populated with Path by searching for files in a file tree rooted at a given starting file.
+* `static Stream<Path>  find(Path start, int maxDepth, BiPredicate<Path,BasicFileAttributes> matcher, FileVisitOption... options)`：Return a Stream that is lazily populated with Path by searching for files in a file tree rooted at a given starting file.
 
 但是用`Files.find()`的时候遇到了问题：
 
@@ -1024,26 +1035,27 @@ Paths 工具类只有两个 get 方法，用来生成 Path ，同略。
 
 * `getLastModifiedTime(Path path, LinkOption... options)`：File.lastModified()
 * `isDirectory(Path path, LinkOption... options)`：File.isDirectory()
-* `isExecutable(Path path), isHidden(Path path), isReadable(Path path), 	isRegularFile(Path path, LinkOption... options), isSameFile(Path path, Path path2), isSymbolicLink(Path path), isWritable(Path path)`：
+* `isExecutable(Path path), isHidden(Path path), isReadable(Path path),     isRegularFile(Path path, LinkOption... options), isSameFile(Path path, Path path2), isSymbolicLink(Path path), isWritable(Path path)`：
 * 
 * `Stream<String> lines(Path path[, Charset cs])`：**读取文件内所有的行；**
-* `List<String>	readAllLines(Path path[, Charset cs])`：**上面返回的是流，这里返回的是`List<String>`**；
+* `List<String> readAllLines(Path path[, Charset cs])`：**上面返回的是流，这里返回的是`List<String>`**；
 * `write(Path path, byte[] bytes, OpenOption... options)`：方便的写数据；
 * `write(Path path, Iterable<? extends CharSequence> lines, [Charset cs, ]OpenOption... options)`：**将多行数据写入文件**；
 * 
-* `Stream<Path>	list(Path dir)`：File.listFiles()
+* `Stream<Path> list(Path dir)`：File.listFiles()
 * `move(Path source, Path target, CopyOption... options)`：移动文件到新的路径；
 * 
 * `BufferedReader newBufferedReader(Path path[, Charset cs])`：将文件打开为`BufferedReader`流；等价于`new BufferedReader(new InputStreamReader(new FileInputStream(File file, String cs)))`；**只不过要快捷的多！**
 * `BufferedWriter newBufferedWriter(Path path[, Charset cs], OpenOption... options)`：恩，快捷；
 * `InputStream newInputStream(Path path, OpenOption... options)`：同上；
-* `OutputStream	newOutputStream(Path path, OpenOption... options)`：
+* `OutputStream newOutputStream(Path path, OpenOption... options)`：
 * 
-* `DirectoryStream<Path>	newDirectoryStream(Path dir, DirectoryStream.Filter<? super Path> filter)`：以 Path 流的方式返回目标路径的所有子路径；
+* `DirectoryStream<Path>    newDirectoryStream(Path dir, DirectoryStream.Filter<? super Path> filter)`：以 Path 流的方式返回目标路径的所有子路径；
 * `String probeContentType(Path path)`：探测文件类型；
 * `long size(Path path)`：File.length()
 
 接下来是遍历路径 `walk/walkFileTree`
+
 * `Stream<Path> walk(Path start, [int maxDepth, ]FileVisitOption... options)`：**这里用的也是`FileVisitOption`，和上面`find`的问题一样：遇到没有访问权限的路径就直接抛出异常退出，没法让它继续下去**；
 * `Path walkFileTree(Path start, [Set<FileVisitOption> options, int maxDepth, ]FileVisitor<? super Path> visitor)`：**这里用的是`FileVisitor`，它能对访问成功/失败、打开路径前/后的情况做很细致的控制，遍 历 路 径 就 是 它 了 ！**
 
@@ -1051,41 +1063,41 @@ Paths 工具类只有两个 get 方法，用来生成 Path ，同略。
 File root = new File("C:/");
 final int[] pathCnt = {0};
 Files.walkFileTree(root.toPath(), new SimpleFileVisitor<Path>(){
-	// 访问一个目录前调用；
-	@Override
-	public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
-		System.out.println(dir);
-		++pathCnt[0];
-		return super.preVisitDirectory(dir, attrs);
-	}
+    // 访问一个目录前调用；
+    @Override
+    public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
+        System.out.println(dir);
+        ++pathCnt[0];
+        return super.preVisitDirectory(dir, attrs);
+    }
 
-	// 访问文件前调用；
-	@Override
-	public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
-		System.out.println(file);
-		++pathCnt[0];
-		return super.visitFile(file, attrs);
-	}
+    // 访问文件前调用；
+    @Override
+    public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+        System.out.println(file);
+        ++pathCnt[0];
+        return super.visitFile(file, attrs);
+    }
 
-	// 访 问 文 件 失 败 ，或 者 目 录 不 可 打 开 ，时调用；所以改写的关键地方在这里；
-	@Override
-	public FileVisitResult visitFileFailed(Path file, IOException exc) throws IOException {
-		// 默认行为是简单的抛出 exc；
-		// return super.visitFileFailed(file, exc);
-		exc.printStackTrace();
-		// try {
-		//     Thread.sleep(5000);
-		// } catch (InterruptedException e) {
-		//     e.printStackTrace();
-		// }
-		return FileVisitResult.CONTINUE;
-	}
+    // 访 问 文 件 失 败 ，或 者 目 录 不 可 打 开 ，时调用；所以改写的关键地方在这里；
+    @Override
+    public FileVisitResult visitFileFailed(Path file, IOException exc) throws IOException {
+        // 默认行为是简单的抛出 exc；
+        // return super.visitFileFailed(file, exc);
+        exc.printStackTrace();
+        // try {
+        //     Thread.sleep(5000);
+        // } catch (InterruptedException e) {
+        //     e.printStackTrace();
+        // }
+        return FileVisitResult.CONTINUE;
+    }
 
-	// dir的所有 子 孙 路径都被访问完毕后，调用此方法；
-	@Override
-	public FileVisitResult postVisitDirectory(Path dir, IOException exc) throws IOException {
-		return super.postVisitDirectory(dir, exc);
-	}
+    // dir的所有 子 孙 路径都被访问完毕后，调用此方法；
+    @Override
+    public FileVisitResult postVisitDirectory(Path dir, IOException exc) throws IOException {
+        return super.postVisitDirectory(dir, exc);
+    }
 });
 System.out.println(pathCnt[0]);
 ===========================================================
@@ -1194,8 +1206,9 @@ class MyThread extends Thread {
 ```
 
 java.lang.Thread：
+
 * `Thread([ThreadGroup group,] [Runnable target,] [String name])`：构造方法；
-* `static Thread	currentThread()`：获取当前线程；
+* `static Thread    currentThread()`：获取当前线程；
 * `getName()`：线程名，默认是 main, Thread-0, Thread-1...
 * `int getPriority()/setPriority(int newPriority)`：线程优先级；
 * `ThreadGroup getThreadGroup()`：获取所属的线程组；
@@ -1271,7 +1284,7 @@ Daemon Thread，守护线程，当所有前台线程都死亡时，后台线程�
 
 ```java
 synchronized(obj) {
-	...
+    ...
 }
 ```
 
