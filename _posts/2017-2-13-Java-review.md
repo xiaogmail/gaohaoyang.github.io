@@ -148,11 +148,12 @@ for (String s : ss) {
 * `hashCode(int[] a)`：Returns a hash code based on the contents of the specified array.
 * `deepHashCode(Object[] a)`：Returns a hash code based on the "deep contents" of the specified array.
 * `parallelPrefix(int[] array, IntBinaryOperator op)`：并行，**累积（cumulate）计算**；
-  > Cumulates, in parallel, each element of the given array in place, using the supplied function. For example if the array initially holds [2, 1, 0, 3]
- and the operation performs addition, then upon return the array holds [2, 3, 3, 6]. 
+
+> Cumulates, in parallel, each element of the given array in place, using the supplied function. For example if the array initially holds [2, 1, 0, 3] and the operation performs addition, then upon return the array holds [2, 3, 3, 6]. 
 Parallel prefix computation is usually more efficient than sequential loops for large arrays.
 * ![](http://upload-images.jianshu.io/upload_images/658453-22665cbd9df3ddcd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 * `setAll(int[] array, IntUnaryOperator generator)`：和上面的 `fill` 很像，但这里用的是生成函数 `generator`，而不是静态值；
+
 > generator - a function accepting an index and producing the desired value for that position
 > 可以用 `lambda`表达式。
 * `parallelSetAll(int[] array, IntUnaryOperator generator)`：并行版；
@@ -236,6 +237,7 @@ extends Object
 implements Serializable, Comparable<String>, CharSequence
 ```
 不可被继承；
+
 > *The class String includes methods for examining individual characters of the sequence, for comparing strings, for searching strings, for extracting substrings, and for creating a copy of a string with all characters translated to uppercase or to lowercase.*
 
 * `String(byte[] bytes, Charset charset)`：Constructs a new String by decoding the  specified array of bytes using the specified charset.
@@ -298,6 +300,7 @@ implements Serializable, Comparable<String>, CharSequence
 `Date`无法实现国际化，而且它对不同属性也使用了前后矛盾的偏移量，比如月份和小时都是以 0 开始的，月份中的天数则是从 1 开始的；
 
 `Date`从 JDK1.0 就开始存在了，它的大部分构造器、方法都已经过时，不再推荐使用；
+
 > 总体来说，`Date`是一个设计相当糟糕的类，因此 Java 官方建议尽量少用`Date`；
 > 
 > 因为 `Date` 类在设计上存在一些缺陷，所以 Java 提供了 `Calendar` 类(since jdk1.1)来更好的处理日期和时间；
@@ -350,6 +353,7 @@ System.out.println(LocalDateTime.now());
 > **`Collection`和`Map`接口是`Java`集合框架的根接口。**
 
 `Collection`接口（子接口为`Set`和`List`）中定义的方法包括：
+
 > `add(Object o), addAll(Collection c), remove(Object o), removeAll(Collection c), retainAll(Collection c)(求交集), `
 > 
 > **`removeIf(Predicate filter)（Java 8 新增，批量删除符合条件的元素）`**
@@ -396,6 +400,7 @@ System.out.println(LocalDateTime.now());
 * 相比于`Set`，`List`接口还额外提供了`listIterator()`方法来返回一个`ListIterator`迭代器；`ListIterator`继承自`Iterator`接口，新增了专门操作`List`的方法：
     * `boolean hasPrevious(), Object previous(), add(Object o)`；向前迭代和增加元素（`Iterator`只能向后迭代和删除元素）；
 * `ArrayList`：
+
 > `ArrayList` 和 `Vector`
 > 
 > `Vector` 是一个非常古老的类（since jdk1.0），有很多缺陷，不建议使用；
@@ -429,6 +434,7 @@ System.out.println(LocalDateTime.now());
 * `EnumMap`：同`EnumSet`；
 * 
 * `Map`接口方法：
+
 > `clear(), containsKey(Object key), containsValue(Object value), isEmpty(), size(), `
 > 
 > `Set entrySet()`：返回 Map 中所有 key-value 对组成的 Map.Entry 对象的 Set 集合；（Entry 是 Map 的内部类，有`getKey(), getValue(), setValue(V value)`三种方法）
@@ -455,6 +461,7 @@ System.out.println(LocalDateTime.now());
 
 * 使用`Properties`读写属性文件（Windows 平台上的 ini 文件就是一种属性文件）
 * `Properties`类可以把 Map 对象和属性文件关联起来，从而方便的读写属性文件中的键值对；
+
 > `Properties`相当于一个 key、value 都是 String 类型的 Map。
 
 ![](http://upload-images.jianshu.io/upload_images/658453-a3ac524dc5f53023.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
@@ -1340,6 +1347,7 @@ public synchronized void run() {
 1. `wait()/notify()/notifyAll()`，略。
 2. 使用 Lock 对象来同步时，要配合 Condition 来控制线程通信。
 3. 使用阻塞队列（BlockingQueue）来控制线程间通信
+
 > 阻塞队列满时，添加操作会被阻塞；空时取操作被阻塞；通过向阻塞队列的存取（put(E e)/take()）来实现线程间通信。
 
 ##### 线程组 ThreadGroup
