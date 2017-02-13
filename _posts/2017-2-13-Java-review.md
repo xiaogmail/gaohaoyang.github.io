@@ -316,6 +316,7 @@ implements Serializable, Comparable<String>, CharSequence
 > ##### 为什么我们需要新的 Java 日期/时间API？
 > 
 > 在开始研究 Java 8日期/时间 API 之前，让我们先来看一下为什么我们需要这样一个新的API。在Java中，现有的与日期和时间相关的类存在诸多问题，其中有：
+> 
 > 1. Java 的日期/时间类的定义并不一致，在 java.util 和 java.sql 的包中都有日期类，此外用于格式化和解析的类在 java.text 包中定义。
 > 2. java.util.Date 同时包含日期和时间，而 java.sql.Date 仅包含日期，将其纳入 java.sql 包并不合理。另外这两个类都有相同的名字，这本身就是一个非常糟糕的设计。
 > 3. 对于时间、时间戳、格式化以及解析，并没有一些明确定义的类。对于格式化和解析的需求，我们有 java.text.DateFormat 抽象类，但通常情况下，SimpleDateFormat 类被用于此类需求。
@@ -327,6 +328,7 @@ implements Serializable, Comparable<String>, CharSequence
 > ##### Java 8日期/时间 API
 > 
 >  Java 8日期/时间 API 是 JSR-310 的实现，它的实现目标是克服旧的日期时间实现中所有的缺陷，新的日期/时间API的一些设计原则是：
+> 
 > 1. 不变性：新的日期/时间 API 中，所有的类都是不可变的，这对多线程环境有好处。
 > 2. ***关注点分离：新的 API 将人可读的日期时间和机器时间（unix timestamp）明确分离，它为日期（Date）、时间（Time）、日期时间（DateTime）、时间戳（unix timestamp）以及时区定义了不同的类。***
 > 3. 清晰：在所有的类中，方法都被明确定义用以完成相同的行为。举个例子，要拿到当前实例我们可以使用 now() 方法，在所有的类中都定义了 format() 和 parse() 方法，而不是像以前那样专门有一个独立的类。为了更好的处理问题，所有的类都使用了工厂模式和策略模式，一旦你使用了其中某个类的方法，与其他类协同工作并不困难。
@@ -336,6 +338,7 @@ implements Serializable, Comparable<String>, CharSequence
 > ##### Java 日期/时间 API 包
 > 
 > Java 日期/时间 API 包含以下相应的包。
+> 
 > 1. java.time 包：这是新的 Java 日期/时间 API 的基础包，所有的主要基础类都是这个包的一部分，如：**`LocalDate, LocalTime, LocalDateTime, Instant, Period, Duration` 等等**。所有这些类都是不可变的和线程安全的，在绝大多数情况下，这些类能够有效地处理一些公共的需求。
 > 2. java.time.chrono 包：这个包为非 ISO 的日历系统定义了一些泛化的 API，我们可以扩展 AbstractChronology 类来创建自己的日历系统。
 > 3. java.time.format 包：这个包包含能够格式化和解析日期时间对象的类，在绝大多数情况下，我们不应该直接使用它们，因为 java.time 包中相应的类已经提供了格式化和解析的方法。
