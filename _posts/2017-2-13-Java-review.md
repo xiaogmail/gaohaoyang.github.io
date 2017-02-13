@@ -151,11 +151,13 @@ for (String s : ss) {
 
 > Cumulates, in parallel, each element of the given array in place, using the supplied function. For example if the array initially holds [2, 1, 0, 3] and the operation performs addition, then upon return the array holds [2, 3, 3, 6]. 
 Parallel prefix computation is usually more efficient than sequential loops for large arrays.
+
 * ![](http://upload-images.jianshu.io/upload_images/658453-22665cbd9df3ddcd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 * `setAll(int[] array, IntUnaryOperator generator)`：和上面的 `fill` 很像，但这里用的是生成函数 `generator`，而不是静态值；
 
 > generator - a function accepting an index and producing the desired value for that position
 > 可以用 `lambda`表达式。
+
 * `parallelSetAll(int[] array, IntUnaryOperator generator)`：并行版；
 * `sort(int[] a)`：排序；
 * `sort(T[] a, Comparator<? super T> c)`：自定义比较函数；
