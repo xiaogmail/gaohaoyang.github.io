@@ -219,8 +219,8 @@ System 类代表当前 Java 程序的运行平台，程序不能创建 System �
 #### Runtime 类
 
 Runtime 类代表 Java 程序的运行时环境，每个 Java 程序都有一个与之对应的 Runtime 实例，应用程序通过该对象与其运行时环境相连。程序不能自己创建 Runtime 实例，但可以通过 `getRuntime()`方法获取与之关联的 Runtime 对象；
-* 与 System 类类似的是 Runtime 类也提供了 `gc()`方法和`runFinalization()`方法来通知系统进行垃圾回收、资源清理，并提供了`load(String filename) 和 loadLibrary(String libname)`方法来加载文件和动态链接库。
-* `runtime.exec("notepad.exe")`：**运行CMD命令！和 Python 一样！**
+与 System 类类似的是 Runtime 类也提供了 `gc()`方法和`runFinalization()`方法来通知系统进行垃圾回收、资源清理，并提供了`load(String filename) 和 loadLibrary(String libname)`方法来加载文件和动态链接库。
+`runtime.exec("notepad.exe")`：**运行CMD命令！和 Python 一样！**
 ![](http://upload-images.jianshu.io/upload_images/658453-3445333a68ac967d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 #### java.util.Objects
