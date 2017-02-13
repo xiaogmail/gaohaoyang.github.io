@@ -268,6 +268,7 @@ implements Serializable, Comparable<String>, CharSequence
 #### java.lang.Math
 
 稍复杂的计算，如三角函数、对数、指数；
+
 * `Math.E/Math.PI`：2.718281828459045 / 3.141592653589793
 * `abs(T t), toDegrees(1.57), toRadians(90), sin/cos/tan, max/min`：基本计算；
 * `floor()/ceil()`：向下取整（小于目标数的最大整数）/向上取整；
