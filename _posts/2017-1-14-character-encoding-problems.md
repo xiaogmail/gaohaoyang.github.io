@@ -105,4 +105,12 @@ UTF-32 编码以32位无符号整数为单位。Unicode 的 UTF-32 编码就是�
 
 Java 中使用 UTF-16 为字符编码格式，中文英文都占2字节。
 
+**注意不要把字符和char等同起来；**Java中char类型固定占2字节，但一个char不一定能表示一个字符；码值大于0xFFFF的字符就需要两个char来存储；
+
+> **Unicode Character Representations**
+> 
+> The char data type (and therefore the value that a Character object encapsulates) are based on the original Unicode specification, which defined characters as fixed-width 16-bit entities. The Unicode Standard has since been changed to allow for characters whose representation requires more than 16 bits. The range of legal code points is now U+0000 to U+10FFFF, known as Unicode scalar value. (Refer to the definition of the U+n notation in the Unicode Standard.)
+> 
+> The set of characters from U+0000 to U+FFFF is sometimes referred to as the Basic Multilingual Plane (BMP). Characters whose code points are greater than U+FFFF are called supplementary characters. The Java platform uses the UTF-16 representation in char arrays and in the String and StringBuffer classes. In this representation, supplementary characters are represented as a pair of char values, the first from the high-surrogates range, (\uD800-\uDBFF), the second from the low-surrogates range (\uDC00-\uDFFF).
+
 > 暂时先整理这些，以后碰到合适的内容再加。
