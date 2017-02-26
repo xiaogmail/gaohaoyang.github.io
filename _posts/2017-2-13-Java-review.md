@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Java 拾遗（之二）
+title: Java 拾遗
 categories: Java
 tags:  Java
 excerpt:
