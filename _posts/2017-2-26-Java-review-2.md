@@ -213,7 +213,7 @@ System.out.println(s1 == s2);// false
 
 #### Lambda表达式（Java 8）
 
-```
+```java
 (形参列表) -> {代码块}
 stringList.stream().forEach(System.out::println);
 ```
@@ -221,7 +221,7 @@ stringList.stream().forEach(System.out::println);
 Lambda表达式是一个对象，实现了某个函数式接口的对象；
 以前大都作为参数（这时候其实就是对象），但还可以这样写：
 
-```
+```java
 Runnable r = () -> {
     for (int i = 0; i < 100; i++) {
         System.out.println(i);
@@ -233,7 +233,7 @@ Runnable r = () -> {
 
 方法引用&构造器引用：
 
-```
+```java
 类名::类方法
 类名::实例方法
 某个(任意)对象::实例方法
@@ -343,7 +343,7 @@ Java中方法的参数传递方式为**值传递**，即传递的是实际参数
 
 静态导入**“import static”**用于导入某个指定类的某个静态变量、方法或全部的静态变量、方法。
 
-```
+```java
 String s1 = new String("hello");
 String s2 = new String("hello");
 System.out.println(s1 == s2);

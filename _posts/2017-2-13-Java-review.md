@@ -657,7 +657,7 @@ public class MyException extends Exception {
 ![](http://upload-images.jianshu.io/upload_images/658453-415141843b528ef6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 否则，就得用这种繁琐的字符串拼接方式（注意单引号），不仅很容易出错，还容易遭到 SQL 注入攻击。
-```
+```java
 String sql = "select * from jdbc_test where jdbc_name='" + userName + "' and jdbc_desc='" + userPass + "'";
 ```
 
