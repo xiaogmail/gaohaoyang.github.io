@@ -30,7 +30,6 @@ JDK 1.5开始，JRE会自动搜索当前路径下的类文件，并自动加载d
 如果在运行程序时想临时指定搜索路径，那么JRE又会完全按照临时路径来搜索，而忽略CLASSPATH或默认行为；
 
 一般可以用如下格式指定临时搜索路径：`java -classpath %CLASSPATH%;.;dir1;dir2;...dirN java类名`
-Java 语言支持的类型分为两类：基本类型和引用类型。整型（byte 1, short 2, int 4, long 8）、字符型（char 2/4）、浮点型（float 4, double 8）和布尔型（boolean 1）都是基本类型。
 
 #### BASIC
 Java 字符类型采用 UTF-16 编码，**UTF-16 以双字节为编码单位，一个字符占 2 字节或 4 字节。**中文和英文在 UTF-16 中都占 2 字节。
@@ -95,7 +94,7 @@ for (String s : ss) {
 * `public, protected, private, default(无); abstract, final; static`.
 * 对象，引用；引用在栈区，对象在堆区；
 
-```
+```java
 String s1 = "语文";
 String s2 = "语文";
 System.out.println(s1 == s2);// true
@@ -162,6 +161,8 @@ System.out.println(s3 == s4);// false
 * 将抽象进行的跟彻底——接口——接口里所有方法都是抽象方法。
 
 接口
+
+接口体现的是设计与实现分离的哲学；
 
 接口可以多继承，但接口只能继承接口；
 
@@ -419,7 +420,7 @@ enum Gender implements GenderDesc {
 
 Java 7新增的二进制整型：`int binVal = 0B011;`
 
-Java的左移（<<）、右移（>>）都是算术移位，要考虑符号位的；无符号右移（>>>）是逻辑移位，不考虑符号位（即带符号位一起移动）；
+Java的左移（`<<`）、右移（`>>`）都是算术移位，要考虑符号位的；无符号右移（`>>>`）是逻辑移位，不考虑符号位（即带符号位一起移动）；
 
 **不要被溢出的情形迷惑了！**
 
