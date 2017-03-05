@@ -1236,6 +1236,8 @@ fos.close();
 
 ![Paste_Image.png](http://upload-images.jianshu.io/upload_images/658453-ff6e70b4ad006a71.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
+![](http://upload-images.jianshu.io/upload_images/658453-4e124afc752347d2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 > `System.in`是`InputStream`，`System.out`是处理流`PrintStream`.
 
 > 输入输出的内容是文本，就应考虑使用字符流；二进制内容就考虑字节流。
