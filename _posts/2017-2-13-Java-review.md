@@ -1019,6 +1019,33 @@ String sql = "select * from jdbc_test where jdbc_name='" + userName + "' and jdb
 
 还有内容：使用`CallableStatement`调用存储过程、管理结果集、处理 Blob 类型数据、使用`ResultSetMetaData`分析结果集、离线`RowSet`、`CachedRowSet`查询分页、事务、分析数据库信息、数据库连接池。
 
+可以使用absolute(), next(), previous(), afterLast()等方法自由移动记录指针的ResultSet被称作可滚动的结果集。Java 5后的ResultSet默认是可滚动的。
+
+可更新的结果集：创建ResultSet时可以传入参数创建可更新的结果集；可更新是双向的——底层数据的改变影响ResultSet的内容；ResultSet可更新数据并提交修改至数据库。
+
+可更新需要底层数据库驱动的支持。（SQL Server就不一定支持，或者说不够新的驱动不支持）
+
+离线结果集：CachedRowSet（继承RowSet接口，RowSet继承ResultSet接口）
+
+与ResultSet相比，RowSet默认是可滚动、可更新、可序列化的结果集；而且是JavaBean；
+
+在使用ResultSet的时代，程序查询得到ResultSet之后必须立即读取或处理它对应的记录，否则一旦Connection关闭，再去通过ResultSet读取记录就会引发异常。在这种模式下，JDBC编程十分痛苦——假设应用程序架构被分为两层：数据访问层和视图显示层，当应用程序在数据访问层得到ResultSet之后，对ResultSet的处理有以下两种常见方式：
+
+1. 迭代ResultSet中的记录，并将这些记录转换成JavaBean，放入List集合中，转换完成后关闭Connection，然后将JavaBean集合传到视图显示层；
+2. 直接将ResultSet传到视图显示层——这要求视图显示层在显示数据时，底层Connection必须一直出于打开状态；
+
+第一种方式比较安全，但编程繁琐；第二种方式，没毛病。
+
+使用离线的CachedRowSet可以很好的解决上面的问题，离线RowSet会直接将底层数据读入内存中，封装成RowSet对象。
+
+离线RowSet的查询分页：setPageSize(int)
+
+但SQL Server貌似不支持；MySQL是支持limit a, b语句的，而SQL Server 2005版本不支持；
+
+使用Connection.getMetaData()可以**分析数据库信息**，如所有的表信息、存储过程、外键、主键等等。
+
+> 对于共享资源的情况，有一个通用的设计模式：资源池，用于解决资源的频繁请求、释放所造成的性能下降。——数据库连接池。
+
 ---
 
 #### Annotation 注解
