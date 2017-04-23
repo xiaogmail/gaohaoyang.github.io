@@ -3,7 +3,7 @@ layout: post
 title: 《Java并发编程的艺术》笔记
 categories: Java
 tags:  Java 并发
-excerpt: The Art of Java Concurrency Programming.<br><img src="http://upload-images.jianshu.io/upload_images/658453-a94405da52987372.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+excerpt: The Art of Java Concurrency Programming.<br><br><img src="http://upload-images.jianshu.io/upload_images/658453-a94405da52987372.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="65%">
 ---
 
 * content
