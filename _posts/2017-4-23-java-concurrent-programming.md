@@ -38,7 +38,9 @@ public final int incrementAndGet() {
 并发编程的两个关键问题：线程间通信和线程间同步；
 
 在**共享内存的并发模型**中，线程之间共享内存的公共状态，通过读-写内存的公共状态进行隐式通信。在**消息传递的并发模型**中，线程之间没有公共状态，必须通过发送消息来显式进行通信。
+
 同步是指用于控制不同线程间操作发生相对顺序的机制。在共享内存并发模型里，同步是**显式进行**的——程序员需要显式指定某个方法或某段代码需要在线程间互斥执行。在消息传递的并发模型里，由于消息的发送必须在消息的接收之前，因此同步是**隐式进行**的。
+
 Java的并发采用的是共享内存模型，所以Java线程之间的通信总是隐式进行。
 
 Java内存模型(JMM)：
@@ -64,7 +66,7 @@ Java内存模型(JMM)：
 
 ```java
 if (flag) {
-	i = a * a;
+    i = a * a;
 }
 ```
 
@@ -118,7 +120,9 @@ volatile的内存语义（对内存可见性的影响）
 * 当读一个volatile变量时，JMM会把该线程对应的本地内存置为无效。线程接下来将从主内存中读取共享变量。
 
 当第二个操作是volatile写时，不管第一个操作是什么，都不能重排序。这个规则确保**volatile写之前的操作不会被编译器重排序到volatile写之后。**
+
 当第一个操作是volatile读时，不管第二个操作是什么，都不能重排序。这个规则确保**volatile读之后的操作不会被编译器重排序到volatile读之前。**
+
 **当第一个操作是volatile写，第二个操作是volatile读时，不能重排序。**
 
 #### 锁的内存语义
@@ -137,20 +141,20 @@ volatile的内存语义（对内存可见性的影响）
 
 如果final域是引用类型：
 
-```
+```java
 public class FinalReferenceExample {
-	final int[] intArray;                     //final是引用类型
-	static FinalReferenceExample obj;
+    final int[] intArray;                     //final是引用类型
+    static FinalReferenceExample obj;
 
-	public FinalReferenceExample () {        //构造函数
-	    intArray = new int[1];              //1
-	    intArray[0] = 1;                   //2
-	}
+    public FinalReferenceExample () {        //构造函数
+        intArray = new int[1];              //1
+        intArray[0] = 1;                   //2
+    }
 
-	public static void writerOne () {          //写线程A执行
-	    obj = new FinalReferenceExample ();  //3
-	}
-	...
+    public static void writerOne () {          //写线程A执行
+        obj = new FinalReferenceExample ();  //3
+    }
+    ...
 }
 ```
 
@@ -164,25 +168,25 @@ public class FinalReferenceExample {
 
 前面我们提到过，写final域的重排序规则可以确保：**在引用变量为任意线程可见之前，该引用变量指向的对象的final域已经在构造函数中被正确初始化过了**（构造函数完成，对象引用才会产生）。其实要得到这个效果，还需要一个保证：在构造函数内部，不能让这个被构造对象的引用为其他线程可见，也就是对象引用不能在构造函数中“逸出”。为了说明问题，让我们来看下面示例代码：
 
-```
+```java
 public class FinalReferenceEscapeExample {
-	final int i;
-	static FinalReferenceEscapeExample obj;
+    final int i;
+    static FinalReferenceEscapeExample obj;
 
-	public FinalReferenceEscapeExample () {
-		i = 1;                              //1 写final域
-		obj = this;                          //2 this引用在此“逸出”
-	}
+    public FinalReferenceEscapeExample () {
+        i = 1;                              //1 写final域
+        obj = this;                          //2 this引用在此“逸出”
+    }
 
-	public static void writer() {
-		new FinalReferenceEscapeExample ();
-	}
+    public static void writer() {
+        new FinalReferenceEscapeExample ();
+    }
 
-	public static void reader {
-		if (obj != null) {                     //3
-			int temp = obj.i;                 //4
-		}
-	}
+    public static void reader {
+        if (obj != null) {                     //3
+            int temp = obj.i;                 //4
+        }
+    }
 }
 ```
 
@@ -198,13 +202,13 @@ JSR-133为什么要增强final的语义
 
 延迟初始化：推迟一些高开销的对象初始化操作，并且只有在使用这些对象时才进行初始化。
 
-```
+```java
 private static Instance instance;
 public synchronized static Instance getInstance() {
-	if (instance == null) {
-		instance = new Instance();
-	}
-	return instance;
+    if (instance == null) {
+        instance = new Instance();
+    }
+    return instance;
 }
 ```
 
@@ -212,19 +216,19 @@ public synchronized static Instance getInstance() {
 
 一个“聪明”的技巧：双重检查锁定：
 
-```
+```java
 public class DoubleCheckLocking {
-	private static Instance instance;
-	public  static Instance getInstance() {
-		if (instance == null) {
-			synchronized(DoubleCheckLocking.class) {
-				if (instance == null) {
-					instance = new Instance(); // 问题的根源出在这里
-				}
-			}
-		}
-		return instance;
-	}
+    private static Instance instance;
+    public  static Instance getInstance() {
+        if (instance == null) {
+            synchronized(DoubleCheckLocking.class) {
+                if (instance == null) {
+                    instance = new Instance(); // 问题的根源出在这里
+                }
+            }
+        }
+        return instance;
+    }
 }
 
 ```
@@ -243,7 +247,7 @@ public class DoubleCheckLocking {
 
 1，利用volatile的内存语义来禁止重排序
 
-```
+```java
 private volatile static Instance instance;
 ```
 
@@ -253,14 +257,14 @@ private volatile static Instance instance;
 
 在执行类的初始化期间，JVM会去获取一个锁。这个锁可以同步多个线程对同一个类的初始化。
 
-```
+```java
 public class InstanceFactory {
-	private static class InstanceHolder {
-		public static Instance instance = new Instance();
-	}
-	public static Instance getInstance() {
-		return InstanceHolder.instance ; // 这里将导致 InstanceHolder 类被初始化
-	}
+    private static class InstanceHolder {
+        public static Instance instance = new Instance();
+    }
+    public static Instance getInstance() {
+        return InstanceHolder.instance ; // 这里将导致 InstanceHolder 类被初始化
+    }
 }
 ```
 
@@ -304,20 +308,20 @@ Object.wait()，Thread.sleep()，Thread.join()等方法均声明抛出Interrupte
 
 轮询中断标识位，或另设一个标志：
 
-```
+```java
 public class Runner implements Runnable {
-	private volatile boolean on = true;
-	private long i;
-	@Override
-	public void run() {
-		while (on && !Thread.currentThread().isInterrupted()) {
-			i++;
-		}
-		System.out.println("Count i = " + i);
-	}
-	public void cancel() {
-		on = false;
-	}
+    private volatile boolean on = true;
+    private long i;
+    @Override
+    public void run() {
+        while (on && !Thread.currentThread().isInterrupted()) {
+            i++;
+        }
+        System.out.println("Count i = " + i);
+    }
+    public void cancel() {
+        on = false;
+    }
 }
 
 Runner one = new Runner();
@@ -338,15 +342,15 @@ two.cancel();
 
 ```java
 synchronized(obj) {
-	while(条件不满足) {
-		obj.wait();
-	}
-	处理逻辑；
+    while(条件不满足) {
+        obj.wait();
+    }
+    处理逻辑；
 }
 
 synchronized(obj) {
-	改变条件；
-	obj.notifyAll();
+    改变条件；
+    obj.notifyAll();
 }
 ```
 
@@ -356,16 +360,17 @@ wait()返回的前提是当前线程获得锁；返回后从wait()处继续执�
 
 注意一点：wait()会使当前对象释放锁，notify() 和 notifyAll() 不会！
 
-```
+```java
 synchronized(obj) {
-	if (条件不满足) {
-		obj.wait();
-	}
-	处理逻辑；
+    if (条件不满足) {
+        obj.wait();
+    }
+    处理逻辑；
 }
 ```
 
 用 if 为什么错了呢？
+
 wait()的线程被其他线程用notify()或notifyAll()唤醒后，是需要先获得锁的（毕竟你是在synchronized块里）；如果在被唤醒到获得锁的这段时间内，条件又被另一个线程改变了，而你获得锁并从wait()方法返回后，直接跳出了 if 的条件判断——这时条件是不满足的，于是产生了逻辑错误。所以，线程在睡眠前后都需要检查条件。
 
 状态转换图
@@ -378,7 +383,7 @@ wait()的线程被其他线程用notify()或notifyAll()唤醒后，是需要先�
 
 4种实现：PipedOutputStream, PipedInputStream, PipedReader, PipedWriter
 
-```
+```java
 PipedWriter out = new PipedWriter();
 PipedReader in = new PipedReader();
 out.connect(in); // 将输入流和输出流进行连接，否则在使用时会抛出IOException；
@@ -391,7 +396,7 @@ out.connect(in); // 将输入流和输出流进行连接，否则在使用时会
 
 默认情况下 initValue() 返回 null 。线程在没有调用 set 之前，第一次调用 get 的时候， get 方法会默认去调用 initValue 这个方法。所以如果没有覆写这个方法，可能导致 get 返回的是 null 。当然如果调用过 set 就不会有这种情况了。但是往往在多线程情况下我们不能保证每个线程的在调用 get 之前都调用了 set ，所以最好对 initValue 进行覆写，以免导致空指针异常。
 
-```
+```java
 public class ConcurrentProgramming {
     public static ThreadLocal<Integer> threadLocalInt = new ThreadLocal<Integer>() {
         @Override
@@ -449,7 +454,7 @@ Thread-1: 5
 
 实现方式：在经典的等待/通知模型的加锁、条件循环、逻辑处理的基础上作出非常小的改动：
 
-```
+```java
 public synchronized Object get(long mills) throws InterruptedException {
     long future = System.currentTimeMillis() + mills;
     long remaining = mills;
@@ -523,7 +528,7 @@ ReentrantLock虽然没能像synchronized关键字一样支持隐式的重进入�
 
 一般情况下，读写锁的性能都会比排它锁要好，因为大多数场景读是多于写的。在读多于写的情况下，读写锁能够提供比排它锁更好的并发性和吞吐量。Java并发包提供读写锁的实现是ReentrantReadWriteLock。
 
-```
+```java
 ReentrantReadWriteLock rwl = new ReentrantReadWriteLock();
 Lock r = rwl.readLock();
 Lock w = rwl.writeLock();
@@ -539,7 +544,7 @@ Lock w = rwl.writeLock();
 * Condition接口支持在等待时**不响应中断**：wait()是会响应中断的；
 * Condition接口支持**等待到将来的某个时间点返回**（和awaitNanos(long)/wait(long)不同！）：awaitUntil(Date deadline)；
 
-```
+```java
 class BoundedBuffer {
     final Lock lock = new ReentrantLock();// 锁对象
     final Condition notFull = lock.newCondition(); //写线程条件
@@ -612,7 +617,7 @@ ConcurrentHashMap的get操作
 
 Segment的get操作实现非常简单和高效。先经过一次再哈希，然后使用这个哈希值通过哈希运算定位到segment，再通过哈希算法定位到元素，代码如下：（两次哈希）
 
-```
+```java
 public V get(Object key) {
     int hash = hash(key.hashCode());
     return segmentFor(hash).get(key, hash);
@@ -639,8 +644,6 @@ ConcurrentHashMap的size操作
 
 插入和移除操作的四种处理方式
 
-# 截图-表格
-
 ![](http://upload-images.jianshu.io/upload_images/658453-af043eac9471a600.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 * 抛出异常：是指当阻塞队列满时候，再往队列里插入元素，会抛出IllegalStateException(“Queue full”)异常。当队列为空时，从队列里获取元素时会抛出NoSuchElementException异常 。
@@ -658,7 +661,7 @@ ConcurrentHashMap的size操作
 * LinkedTransferQueue：一个由链表结构组成的无界阻塞队列。
 * LinkedBlockingDeque：一个由链表结构组成的双向阻塞队列。
 
-```
+```java
 // 大小1000的、线程公平的阻塞队列；
 // 传入了大小参数，这就叫有界；
 ArrayBlockingQueue fairQueue = new ArrayBlockingQueue(1000, true);
@@ -783,7 +786,7 @@ ForkJoinPool由ForkJoinTask数组和ForkJoinWorkerThread数组组成，ForkJoinT
 
 用于等待其他线程完成操作。一个功能更强大的 join().
 
-```
+```java
 CountDownLatch c = new CountDownLatch(2); // 等待两个[点]完成；
 ...
 c.countDown(); // 第一个等待的操作完成；
@@ -801,7 +804,7 @@ CountDownLatch(N)等待N个点完成；这里说的N个点，可以是Ｎ个线�
 
 让一组线程到达一个屏障（也可以叫同步点）时被阻塞，直到最后一个线程到达屏障时，屏障才会打开，所有被屏障拦截的线程才会继续运行。
 
-```
+```java
 CyclicBarrier c = new CyclicBarrier(2); // 屏障会拦截/等待两个线程；
 
 // 在第一个线程中；
@@ -819,7 +822,7 @@ CountDownLatch的计数器只能用一次，而CyclicBarrier的计数器可以�
 
 **信号量**，用来控制同时访问特定资源的线程数量。
 
-```
+```java
 Semaphore s = new Semaphore(10);
 Executor threadPool = Executors.newFixedThreadPool(30);
 
@@ -845,7 +848,7 @@ for (int i = 0; i < 30; i++) {
 
 Exchanger用于进行线程间的数据交换。它提供一个同步点，在这个同步点，两个线程可以交换彼此的数据。如果第一个线程先执行exchange()方法，它会一直等待第二个线程也执行exchange()方法，然后两个线程交换数据。
 
-```
+```java
 Exchanger<String> exchanger = new Exchanger<>();
 // 在线程A中；
 try {
@@ -876,31 +879,31 @@ try {
 
 我们可以通过ThreadPoolExecutor来创建一个线程池。
 
-```
+```java
 new ThreadPoolExecutor(corePoolSize, maximumPoolSize,
 keepAliveTime, milliseconds,runnableTaskQueue, threadFactory,handler);
 ```
 
 * corePoolSize（线程池的基本大小）：当提交一个任务到线程池时，线程池会创建一个线程来执行任务，**即使其他空闲的基本线程能够执行新任务也会创建线程，等到需要执行的任务数大于线程池基本大小时就不再创建**。如果调用了线程池的prestartAllCoreThreads方法，线程池会提前创建并启动所有基本线程。
 * runnableTaskQueue（任务队列）：用于保存等待执行的任务的阻塞队列。可以选择以下几个阻塞队列。
-	* ArrayBlockingQueue：是一个基于数组结构的有界阻塞队列，此队列按 FIFO（先进先出）原则对元素进行排序。
-	* LinkedBlockingQueue：一个基于链表结构的阻塞队列，此队列按FIFO （先进先出） 排序元素，吞吐量通常要高于ArrayBlockingQueue。静态工厂方法Executors.newFixedThreadPool()使用了这个队列。
-	* SynchronousQueue：一个**不存储元素**的阻塞队列。每个插入操作(offer())必须等到另一个线程调用移除操作(poll())，否则插入操作一直处于阻塞状态，吞吐量通常要高于LinkedBlockingQueue，静态工厂方法Executors.newCachedThreadPool使用了这个队列。
-	* PriorityBlockingQueue：一个具有优先级得无限阻塞队列。
+    * ArrayBlockingQueue：是一个基于数组结构的有界阻塞队列，此队列按 FIFO（先进先出）原则对元素进行排序。
+    * LinkedBlockingQueue：一个基于链表结构的阻塞队列，此队列按FIFO （先进先出） 排序元素，吞吐量通常要高于ArrayBlockingQueue。静态工厂方法Executors.newFixedThreadPool()使用了这个队列。
+    * SynchronousQueue：一个**不存储元素**的阻塞队列。每个插入操作(offer())必须等到另一个线程调用移除操作(poll())，否则插入操作一直处于阻塞状态，吞吐量通常要高于LinkedBlockingQueue，静态工厂方法Executors.newCachedThreadPool使用了这个队列。
+    * PriorityBlockingQueue：一个具有优先级得无限阻塞队列。
 maximumPoolSize（线程池最大大小）：线程池允许创建的最大线程数。如果队列满了，并且已创建的线程数小于最大线程数，则线程池会再创建新的线程执行任务。值得注意的是如果使用了无界的任务队列这个参数就没什么效果。
 * ThreadFactory：用于设置创建线程的工厂，可以通过线程工厂给每个创建出来的线程设置更有意义的名字，Debug和定位问题时非常又帮助。
 * RejectedExecutionHandler（饱和策略）：当队列和线程池都满了，说明线程池处于饱和状态，那么必须采取一种策略处理提交的新任务。这个策略默认情况下是AbortPolicy，表示无法处理新任务时抛出异常。以下是JDK1.5提供的四种策略。
-	* AbortPolicy：直接抛出异常。
-	* CallerRunsPolicy：只用调用者所在线程来运行任务。
-	* DiscardOldestPolicy：丢弃队列里最近的一个任务，并执行当前任务。
-	* DiscardPolicy：不处理，丢弃掉。
+    * AbortPolicy：直接抛出异常。
+    * CallerRunsPolicy：只用调用者所在线程来运行任务。
+    * DiscardOldestPolicy：丢弃队列里最近的一个任务，并执行当前任务。
+    * DiscardPolicy：不处理，丢弃掉。
 当然也可以根据应用场景需要来实现RejectedExecutionHandler接口自定义策略。如记录日志或持久化不能处理的任务。
 * keepAliveTime（线程活动保持时间）：线程池的工作线程空闲后，保持存活的时间。所以如果任务很多，并且每个任务执行的时间比较短，可以调大这个时间，提高线程的利用率。
 * TimeUnit（线程活动保持时间的单位）：可选的单位有天（DAYS），小时（HOURS），分钟（MINUTES），毫秒(MILLISECONDS)，微秒(MICROSECONDS, 千分之一毫秒)和毫微秒(NANOSECONDS, 千分之一微秒)。
 
 **提交任务**
 
-```
+```java
 void execute(Runnable command) // 没有返回值；
 <T> Future<T> submit(Callable<T> task) // 有返回值的任务；
 ```
@@ -963,11 +966,11 @@ FixedThreadPool是使用固定线程数的线程池,Executors提供的API有如�
 1. `public static ExecutorService newFixedThreadPool(int nThreads);`
 2. `public static ExecutorService newFixedThreadPool(int nThreads, ThreadFactory theadFactory);`
 
-```
+```java
 public static ExecutorService newFixedThreadPool(int nThreads){
-	return new ThreadPoolExecutor(nThreads, nThreads,
-								  0L, TimeUnit.MILLISECONDS,
-								  new LinkedBlockingQueue<Runnable>());
+    return new ThreadPoolExecutor(nThreads, nThreads,
+                                  0L, TimeUnit.MILLISECONDS,
+                                  new LinkedBlockingQueue<Runnable>());
 }
 // corePoolSize和maximumPoolSize都设为nThreads；
 // 空闲线程的存活时间为0，意味着多余的空闲线程会立即死亡；
@@ -981,12 +984,12 @@ SingleThreadExecutor使用单线程执行任务，Executors提供的API有如下
 1. `public static ExecutorService newSingleThreadExecutor();`
 2. `public static ExecutorService newSingleThreadExecutor(ThreadFactory threadFactory);`
 
-```
+```java
 public static ExecutorService newSingleThreadExecutor() {
-	return new FinalizableDelegatedExecutorService
-		(new ThreadPoolExecutor(1, 1,
-								0L, TimeUnit.MILLISECONDS,
-								new LinkedBlockingQueue<Runnable>()));
+    return new FinalizableDelegatedExecutorService
+        (new ThreadPoolExecutor(1, 1,
+                                0L, TimeUnit.MILLISECONDS,
+                                new LinkedBlockingQueue<Runnable>()));
 }
 // corePoolSize和maximumPoolSize均为1；
 // 多余的空闲线程立即死亡；
@@ -1000,11 +1003,11 @@ CachedThreadPool是无界线程池，Executors提供的API有如下两个：
 1. `public static ExecutorService newCachedThreadPool();`
 2. `public static ExecutorService newCachedThreadPool(ThreadFactory threadFactory);`
 
-```
+```java
 public static ExecutorService newCachedThreadPool() {
-	return new ThreadPoolExecutor(0, Integer.MAX_VALUE,
-								  60L, TimeUnit.SECONDS,
-								  new SynchronousQueue<Runnable>());
+    return new ThreadPoolExecutor(0, Integer.MAX_VALUE,
+                                  60L, TimeUnit.SECONDS,
+                                  new SynchronousQueue<Runnable>());
 }
 // 线程池大小不限；
 // 多余的空闲线程存活60s;
@@ -1049,7 +1052,7 @@ ScheduledThreadPoolExecutor中线程执行某个周期任务的4个步骤：
 
 Runnable接口：
 
-```
+```java
 @FunctionalInterface
 public interface Runnable {
     public abstract void run();
@@ -1058,7 +1061,7 @@ public interface Runnable {
 
 Callable接口（可以有返回值，可以抛出异常）：
 
-```
+```java
 @FunctionalInterface
 public interface Callable<V> {
     V call() throws Exception;
@@ -1067,7 +1070,7 @@ public interface Callable<V> {
 
 Future接口：
 
-```
+```java
 public interface Future<V> {
     boolean cancel(boolean mayInterruptIfRunning);
     boolean isCancelled();
@@ -1103,11 +1106,11 @@ Future<?> submit(Runnable task); // 线程执行成功返回null；
 
 Callable和Future的普通用法：
 
-```
+```java
 Callable<Integer> callable = new Callable<Integer>() {
-	public Integer call() throws Exception {
-	    return new Random().nextInt(100);
-	}
+    public Integer call() throws Exception {
+        return new Random().nextInt(100);
+    }
 };
 FutureTask<Integer> future = new FutureTask<Integer>(callable);
 new Thread(future).start();
